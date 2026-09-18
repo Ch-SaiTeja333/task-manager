@@ -9,7 +9,12 @@ import { verifyToken } from "./middlewares/verifyToken.js";
 const app = express();
 
 //enable cors
-app.use(cors({ origin: ["http://localhost:5174"] ,credentials:true}));
+app.use(
+  cors({
+    origin: ["https://task-manager-1-3xco.onrender.com", "http://localhost:5174", "http://localhost:5173"],
+    credentials: true,
+  }),
+);
 //add body parser middleware
 app.use(express.json());
 //add cookie parser middleware
@@ -22,7 +27,7 @@ app.use("/user-api", userRoute);
 async function connectDBAndStartServer() {
   try {
     //connect to database server
-    await connect("mongodb://localhost:27017/pvptododb");
+    await connect("mongodb+srv://chintakrindasaiteja_db_user:jozejcLzaBwlDdgm@cluster0.jfqzcl2.mongodb.net/Task_Manager");
     console.log("DB connection success");
     //start HTTP server
     app.listen(8000, console.log("server listening on port 8000"));
@@ -34,8 +39,8 @@ async function connectDBAndStartServer() {
 connectDBAndStartServer();
 
 //page refresh route
-app.get("/refresh",verifyToken,async(req,res)=>{
-  console.log("user is ",req.user)
-  let userObj=await UserModel.findOne({email:req.user.email})
-  res.status(200).json({message:"user",payload:userObj})
-})
+app.get("/refresh", verifyToken, async (req, res) => {
+  console.log("user is ", req.user);
+  let userObj = await UserModel.findOne({ email: req.user.email });
+  res.status(200).json({ message: "user", payload: userObj });
+});

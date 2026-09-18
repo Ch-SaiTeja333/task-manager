@@ -20,7 +20,7 @@ function Register() {
     console.log(newUser);
     try {
       //Make HTTP POST req tio create new User in Backend
-      let res = await axios.post("http://localhost:8000/user-api/user", newUser);
+      let res = await axios.post("https://task-manager-k888.onrender.com/user-api/user", newUser);
       console.log("res is ", res);
       //if resourse is created
       if (res.status === 201) {

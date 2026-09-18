@@ -14,7 +14,7 @@ function CreateTask() {
 
   const onSubmitNewtask = async (newTask) => {
     console.log(newTask);
-    let res = await axios.put(`http://localhost:8000/user-api/todo/${currentUser._id}`, newTask, {
+    let res = await axios.put(`https://task-manager-k888.onrender.com/user-api/todo/${currentUser._id}`, newTask, {
       withCredentials: true,
     });
     console.log("res is ", res);

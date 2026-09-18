@@ -28,7 +28,7 @@ function TaskList() {
   //save modified task
   const saveModifiedTask = async (modifiedTaskObj) => {
     let res = await axios.put(
-      `http://localhost:8000/user-api/edit-todo/userid/${currentUser._id}/taskid/${taskBeingEdited._id}`,
+      `https://task-manager-k888.onrender.com/user-api/edit-todo/userid/${currentUser._id}/taskid/${taskBeingEdited._id}`,
       modifiedTaskObj,
       {
         withCredentials: true,
@@ -46,7 +46,7 @@ function TaskList() {
 
   const setTaskCompleted = async (taskid) => {
     let res = await axios.put(
-      `http://localhost:8000/user-api/edit-status/userid/${currentUser._id}/taskid/${taskid}`,
+      `https://task-manager-k888.onrender.com/user-api/edit-status/userid/${currentUser._id}/taskid/${taskid}`,
       null,
       { withCredentials: true }
     );
@@ -58,7 +58,7 @@ function TaskList() {
 
   //delete a task
   const deleteTask = async (taskid) => {
-    let res = await axios.put(`http://localhost:8000/user-api/delete-todo/userid/${currentUser._id}/taskid/${taskid}`);
+    let res = await axios.put(`https://task-manager-k888.onrender.com/user-api/delete-todo/userid/${currentUser._id}/taskid/${taskid}`);
     if (res.status === 200) {
       setCurrentUser(res.data.payload);
     }

@@ -13,7 +13,7 @@ function LoginContext({ children }) {
   //user login
   const userLogin = async (userCredObj) => {
     try {
-      let res = await axios.post("http://localhost:8000/user-api/login", userCredObj, {
+      let res = await axios.post("https://task-manager-k888.onrender.com/user-api/login", userCredObj, {
         withCredentials: true,
       });
       //if login success
@@ -31,7 +31,7 @@ function LoginContext({ children }) {
 
   //user logout
   const userLogout = async () => {
-    let res = await axios.get("http://localhost:8000/user-api/logout", { withCredentials: true });
+    let res = await axios.get("https://task-manager-k888.onrender.com/user-api/logout", { withCredentials: true });
     if (res.status === 200) {
       setLoginStatus(false);
     }
@@ -41,7 +41,7 @@ function LoginContext({ children }) {
   console.log("login err is ", loginErrMessage);
 
   // const pageRefresh = async () => {
-  //   let res = await axios.get("http://localhost:8000/refresh", { withCredentials: true });
+  //   let res = await axios.get("https://task-manager-k888.onrender.com/refresh", { withCredentials: true });
   //   console.log("res is ", res);
   //   setCurrentUser(res.data.payload);
   //   setLoginStatus(true);
@@ -49,7 +49,7 @@ function LoginContext({ children }) {
   // };
   const pageRefresh = async () => {
     try {
-      let res = await axios.get("http://localhost:8000/refresh", {
+      let res = await axios.get("https://task-manager-k888.onrender.com/refresh", {
         withCredentials: true,
       });
 
